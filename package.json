@@ -2,7 +2,7 @@
     "name": "EggTimer",
     "description": "The egg timer for the important periodic reminders in your life",
     "version": "0.0.1",
-    "author": "Andy Jiang",
+    "author": "Andy Jiang and Jen Yip",
     "main": "server.js",
     "repository": {
         "type": "git",
