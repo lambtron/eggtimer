@@ -1,0 +1,22 @@
+{
+    "name": "EggTimer",
+    "description": "The egg timer for the important periodic reminders in your life",
+    "version": "0.0.1",
+    "author": "Andy Jiang",
+    "main": "server.js",
+    "repository": {
+        "type": "git",
+        "url": "https://bitbucket.org/andyjiang/eggtimer"
+    },
+    "engines": {
+        "node": "0.10.x",
+    	"npm": "1.2.x"
+    },
+    "dependencies": {
+        "express": "3.x",
+        "mongoose": "2.x",
+        "bower": "latest",
+        "underscore": "latest",
+        "moment": "latest"
+    }
+}
