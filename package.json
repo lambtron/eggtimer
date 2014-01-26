@@ -16,7 +16,9 @@
         "express": "3.x",
         "mongoose": "2.x",
         "bower": "latest",
+        "jquery": "*",
         "underscore": "latest",
-        "moment": "latest"
+        "moment": "latest",
+        "nodemailer": "*"
     }
 }

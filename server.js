@@ -7,8 +7,11 @@ var express = require('express')
   , server = http.createServer(app)
   , mongoose = require('mongoose')
   , database = require('./config/database')
+  , $ = require('jquery')
   // , io = require('socket.io').listen(server)
-  , port = process.env.PORT || 3000;
+  , port = process.env.PORT || 3000
+  , mail = require('./app/controllers/mail_smtp')
+  , fs = require('fs');
 
 // Set environmental variables.
 // require('./config/config');
@@ -33,5 +36,7 @@ app.get('*', function(req, res) {
 // Listen (start app with node server.js) ==========================================================
 server.listen(port, function() {
 	console.log("App is now listening on port " + port);
-	// console.log(app.routes);
+	
+  mail.sendRegistrationConfirmation();
+  // console.log(app.routes);
 });
