@@ -37,6 +37,5 @@ app.get('*', function(req, res) {
 server.listen(port, function() {
 	console.log("App is now listening on port " + port);
 	
-  mail.sendRegistrationConfirmation();
-  // console.log(app.routes);
+  // mail.sendRegistrationConfirmation();
 });
