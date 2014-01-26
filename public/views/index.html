@@ -50,13 +50,7 @@
 			  <p><small>The egg timer for the important periodic reminders in your life.</small></p>
 			</div>
 		</div>
-		<!-- 1. Upload your document or image or etc. -->
-		<div class="row">
-			<div class="page-header">
-			  <h2></h2>
-			</div>
-		</div>
-
+		<hr>
 		<div class="row">			
 			<form class="form-group" name="userInfo">
 			  <p>Your information.</p>
@@ -69,7 +63,11 @@
 			  <div class="form-group col-lg-4">
 			    <input type="text" placeholder="Zip code" class="form-control" name="user.zip_code" ng-model="user.zip_code" required>
 			  </div>
-
+			</form>
+		</div>
+		<hr>
+		<div class="row">
+			<form class="form-group">
 			  <!-- Reminders. -->
 			  <p>Set up your reminders.</p>
 
@@ -110,7 +108,7 @@
 
 		<div class="row">
 		  <div class="form-group col-lg-12">
-		  	<div class="btn-large btn-primary btn pull-right" ng-click="submit()" ng-disabled="!userInfo.$valid">Submit</div>
+		  	<div class="btn-large btn-primary btn pull-right" ng-click="submit()" ng-disabled="!userInfo.$valid">Submit your information!</div>
 		  </div>
 		</div>
 	</div>
