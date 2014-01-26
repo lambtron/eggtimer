@@ -10,7 +10,8 @@ var express = require('express')
   , $ = require('jquery')
   // , io = require('socket.io').listen(server)
   , port = process.env.PORT || 3000
-  , mail = require('./app/controllers/mail_smtp')
+  // , mail = require('./app/controllers/mail')
+  , mail = require('./app/controllers/mail_smtp') // comment this out later
   , fs = require('fs');
 
 // Set environmental variables.
