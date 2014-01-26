@@ -55,9 +55,43 @@
 			<div class="page-header">
 			  <h2>Page header</h2>
 			</div>
-			<div class="col-lg-6">
-				Stuff here.
-	    </div>
+			
+			<form class="col-lg-6 form-group" name="userInfo">
+			  <p>Your information.</p>
+			  <div class="form-group col-lg-12">
+		    	<input type="text" placeholder="Name" class="form-control" name="user.first_name" ng-model="user.first_name" required>
+			  </div>
+			  <div class="form-group col-lg-12">
+			    <input type="text" placeholder="Email address" class="form-control" name="user.zip_code" ng-model="user.email_address" required>
+			  </div>
+			  <div class="form-group col-lg-12">
+			    <input type="text" placeholder="Zip code" class="form-control" name="user.zip_code" ng-model="user.zip_code" required>
+			  </div>
+
+			  <!-- Reminders. -->
+			  <p>Set up your reminders.</p>
+			  <div class="form-group col-lg-6">
+			    <input type="text" placeholder="General health check up (annual)" class="form-control" name="" required>
+			  </div>
+			  <div class="form-group col-lg-3">
+			  	<input type="text" placeholder="MM/DD/YY" class="form-control" name="" required>
+			  </div>
+			  <div class="form-group col-lg-3">
+			  	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+				    <span class="selection">Option 1</span>
+				    <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu" role="menu">
+				    <li><a>Option 1</a></li>
+				    <li><a>Option 2</a></li>
+				    <li><a>Option 3</a></li>
+				  </ul>
+			  </div>
+
+			  <div class="form-group col-lg-12">
+			  	<div class="btn-large btn-primary btn pull-right" ng-click="function()" ng-disabled="!userInfo.$valid">Submit</div>
+			  </div>
+			</form>
 		</div>
 	</div>
 </body>
