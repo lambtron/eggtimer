@@ -43,7 +43,7 @@
 	    </ul>
 	  </div><!-- /.navbar-collapse -->
 	</nav>
-	<div class="container">
+	<div class="container col-lg-8 col-lg-offset-2">
 		<div class="row">
 			<div class="jumbotron">
 			  <h1>Egg Timer</h1>
@@ -53,45 +53,65 @@
 		<!-- 1. Upload your document or image or etc. -->
 		<div class="row">
 			<div class="page-header">
-			  <h2>Page header</h2>
+			  <h2></h2>
 			</div>
-			
-			<form class="col-lg-6 form-group" name="userInfo">
+		</div>
+
+		<div class="row">			
+			<form class="form-group" name="userInfo">
 			  <p>Your information.</p>
 			  <div class="form-group col-lg-12">
 		    	<input type="text" placeholder="Name" class="form-control" name="user.first_name" ng-model="user.first_name" required>
 			  </div>
-			  <div class="form-group col-lg-12">
+			  <div class="form-group col-lg-8">
 			    <input type="text" placeholder="Email address" class="form-control" name="user.zip_code" ng-model="user.email_address" required>
 			  </div>
-			  <div class="form-group col-lg-12">
+			  <div class="form-group col-lg-4">
 			    <input type="text" placeholder="Zip code" class="form-control" name="user.zip_code" ng-model="user.zip_code" required>
 			  </div>
 
 			  <!-- Reminders. -->
 			  <p>Set up your reminders.</p>
-			  <div class="form-group col-lg-6">
-			    <input type="text" placeholder="General health check up (annual)" class="form-control" name="" required>
-			  </div>
-			  <div class="form-group col-lg-3">
-			  	<input type="text" placeholder="MM/DD/YY" class="form-control" name="" required>
-			  </div>
-			  <div class="form-group col-lg-3">
-			  	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-				    <span class="selection">Option 1</span>
-				    <span class="caret"></span>
-				  </button>
-				  <ul class="dropdown-menu" role="menu">
-				    <li><a>Option 1</a></li>
-				    <li><a>Option 2</a></li>
-				    <li><a>Option 3</a></li>
-				  </ul>
-			  </div>
 
-			  <div class="form-group col-lg-12">
-			  	<div class="btn-large btn-primary btn pull-right" ng-click="function()" ng-disabled="!userInfo.$valid">Submit</div>
-			  </div>
+			  <div ng-repeat="reminder in user.reminders track by $index">
+				  <div class="form-group col-lg-5">
+				  	<input type="text" placeholder="{{reminder.reminder}}" class="form-control">
+				  </div>
+				  <div class="form-group col-lg-3">
+				  	<input type="text" placeholder="{{reminder.start_date}}" class="form-control">
+				  </div>
+				  <div class="form-group col-lg-3">
+				  	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					    <span class="selection">{{reminder.frequency}}</span>
+					    <span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu" role="menu">
+					  	<li ng-repeat="frequency in frequencies">
+					  		<a>{{frequency}}</a>
+					  	</li>
+					  </ul>
+				  </div>
+				  <div class="form-group col-lg-1" ng-click="removeReminder($index)" style="cursor: pointer">
+				  	x
+				  </div>
+			 	</div>
 			</form>
+		</div>
+
+		<div class="row">	
+		 	<div class="form-group col-lg-12">
+		 		<div class="btn-large btn-info btn pull-right" ng-click="addReminder()">
+		 			Add new reminder
+		 		</div>
+		 	</div>
+		</div>
+
+		<br>
+
+		<div class="row">
+		  <div class="form-group col-lg-12">
+		  	<div class="btn-large btn-primary btn pull-right" ng-click="submit()" ng-disabled="!userInfo.$valid">Submit</div>
+		  </div>
 		</div>
 	</div>
 </body>
