@@ -1,0 +1,23 @@
+Adding new reminders
+
+dental appointment, 1/2/2014, annually
+twilio expenses, 03/24/14, three weeks
+call grandma on january 2014 [every month, monthly]
+wash car on 2/2/2014 every two weeks
+
+
+
+Deleting old reminders
+
+remove call grandma
+delete call grandma
+
+
+
+Updating old reminders
+
+dental appointment, 02/12/2014, six months
+call grandma, 03/10/2013, four times a year
+change dental appointment to every four months
+change call grandma to 1/3/2013 and quarterly
+
