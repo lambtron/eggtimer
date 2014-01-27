@@ -17,40 +17,22 @@ var _ = require('underscore')
 // Public functions. ===============================================================================
 module.exports = function(app) {
 
-	// Database stuff. ===============================================================================
-
-	// * POST, add new user to mongodb.
+	// Add new user to MongoDB.
 	app.post('/api/user', function(req, res) {
-		var first_name = req.body.firstName
-		  , last_name = req.body.lastName;
-	});
+		var user = {};
+  	user.first_name = req.body.first_name
+  	  , user.email_address = req.body.email_address
+  	  , user.zip_code = req.body.zip_code
+  	  , user.reminders = req.body.reminders;
 
-	// + GET all users and messages.
-	app.get('/api/users', function(req, res) {
-		User.find(function(err, users) {
-			if (err) {
-				res.send(err, 400);
-			};
-			res.json(users);
-		});
-	});
-
-	// Delete a User.
-	app.delete('/api/users/:user_id', function(req, res) {
-		User.remove({
-			_id : req.params.user_id
-		}, function(err, user) {
+  	// Create new user object in MongoDB.
+  	User.create(user, function(err, data) {
 			if (err) {
 				res.send(err, 400);
 			};
 
-			// Get and return all of the messages after the message is deleted.
-			User.find(function(err, users) {
-				if (err) {
-					res.send(err, 400);
-				};
-				res.json(users);
-			});
+			// Return success.
+			res.json(data);
 		});
 	});
 

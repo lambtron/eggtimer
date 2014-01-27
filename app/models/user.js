@@ -42,7 +42,31 @@ var UserSchema = new Schema({
  * Statics
  */
 UserSchema.statics = {
-    
+  
+}
+
+/**
+ * Methods
+ * Available to all User instances.
+ */
+UserSchema.methods = {
+  addReminder: function (reminderObj, cb) {
+    // reminderObj.reminder = reminder;
+    // reminderObj.start_date = start_date;
+    // reminderObj.frequency = frequency;
+
+    // Push reminderObj.
+
+    this.save(cb);
+  },
+  updateReminder: function (reminderObj, cb) {
+    // Find reminderObj and update it.
+    this.save(cb);
+  },
+  deleteReminder: function (reminderObj, cb) {
+    // Find reminderObj and delete it.
+    this.save(cb);
+  }
 }
 
 mongoose.model('User', UserSchema);
