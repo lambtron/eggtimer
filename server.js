@@ -36,11 +36,9 @@ app.get('*', function(req, res) {
 
 app.post('/email/inbound', function(req, res) {
   if (res.headers) { res.send(200) }
-    //res.send(200);
-    console.log('hi');
-    console.log(req.body.mandrill_events);
-    
-  }
+  //res.send(200);
+  console.log('hi');
+  console.log(req.body.mandrill_events);
   
 });
 
