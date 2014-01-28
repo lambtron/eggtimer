@@ -36,8 +36,14 @@ app.get('*', function(req, res) {
 
 app.post('/email/inbound', function(req, res) {
   console.log('headers');
-  console.log(req.headers);
-  mail.incomingEmail(req.body);
+  if (req.headers) {
+    res.send(200);
+  } else {
+    console.log('hi');
+    console.log(req.body);
+    mail.incomingEmail(req.body);  
+  }
+  
 });
 
 // Listen (start app with node server.js) ==========================================================
