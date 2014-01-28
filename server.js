@@ -34,7 +34,7 @@ app.get('*', function(req, res) {
 	res.sendfile('index.html', {'root': './public/views/'});
 });
 
-app.get('/email/inbound', function(req, res) {
+app.post('/email/inbound', function(req, res) {
   var body = '';
   req.on('data', function(chunk) {
     body += chunk;
