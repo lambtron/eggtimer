@@ -35,6 +35,8 @@ app.get('*', function(req, res) {
 });
 
 app.post('/email/inbound', function(req, res) {
+  console.log('headers');
+  console.log(req.headers);
   mail.incomingEmail(req.body);
 });
 
