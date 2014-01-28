@@ -35,15 +35,15 @@ app.get('*', function(req, res) {
 });
 
 app.post('/email/inbound', function(req, res) {
-  if (res.headers) { res.send(200) }
-  
-  var inbound = {
-    'from': req.body.mandrill_events.msg.from_email,
-    'body': req.body.mandrill_events.msg.text,
+  var events = JSON.parse(req.body.mandrill_events);
+
+  for (var i=0; i<events.length; i++) {
+    mail.incomingEmail({
+      'from': events[i].msg.from_email,
+      'text': events[i].msg.text
+    });
+    res.send(200);
   }
-  //res.send(200);
-  mail.incomingEmail(inbound);
-  
 });
 
 // Listen (start app with node server.js) ==========================================================

@@ -8,6 +8,8 @@
 		// Go through each line.
 		var emailLines = body.split('\n+');
 
+    console.log(emailLines)
+
 		// emailLines is an array of lines in the email.
 		// Look for 'add', 'remove', 'change' at the beginning of each.
 		for(var i = 0; i < emailLines.length; i++) {
