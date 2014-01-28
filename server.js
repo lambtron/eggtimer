@@ -35,9 +35,13 @@ app.get('*', function(req, res) {
 });
 
 app.post('/email/inbound', function(req, res) {
-  console.log('**');
-  console.log(req.body());
-  res.send(200);
+  if (res.headers) { res.send(200) }
+    //res.send(200);
+    console.log('hi');
+    console.log(req.body.mandrill_events);
+    
+  }
+  
 });
 
 // Listen (start app with node server.js) ==========================================================
