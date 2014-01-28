@@ -35,13 +35,14 @@ app.get('*', function(req, res) {
 });
 
 app.post('/email/inbound', function(req, res) {
+  console.log(req);
   var body = '';
-  req.on('data', function(chunk) {
+  /*req.on('data', function(chunk) {
     body += chunk;
   });
   req.on('end', function() {
     mail.incomingEmail(body);
-  });
+  });*/
 });
 
 // Listen (start app with node server.js) ==========================================================
