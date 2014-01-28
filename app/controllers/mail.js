@@ -5,8 +5,7 @@
   var inbound = require('./controllers/mail_inbound.js')
     , outbound = require('./controllers/mail_smtp.js');
 
-
-
+  // Get the email.
   
 
 

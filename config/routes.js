@@ -36,6 +36,19 @@ module.exports = function(app) {
 		});
 	});
 
+	// Endpoint for receiving inbound email.
+	app.post('/api/email', function(req, res) {
+		// Inbound email logic.
+
+		// Get user (based on email address).
+
+		// Parse email.
+
+		// Then perform right database operations based on email.
+
+		// Respond with confirmation or clarification email.
+	});
+
 	// Application route =============================================================================
 	app.get('*', function(req, res) {
 		// Load the single view file (Angular will handle the page changes).

@@ -51,21 +51,20 @@ UserSchema.statics = {
  */
 UserSchema.methods = {
   addReminder: function (reminderObj, cb) {
-    // reminderObj.reminder = reminder;
-    // reminderObj.start_date = start_date;
-    // reminderObj.frequency = frequency;
-
-    // Push reminderObj.
-
-    this.save(cb);
+    var query = { _id: this._id };
+    var update = { $push: { reminders: reminderObj } };
+    this.constructor.update(query, update, cb);
   },
   updateReminder: function (reminderObj, cb) {
-    // Find reminderObj and update it.
-    this.save(cb);
+    var query = { _id: this._id, 'reminders.reminder': reminderObj.reminder };
+    var update = { $set: { 'reminders.$.start_date': reminderObj.start_date,
+      'reminders.$.frequency': reminderObj.frequency } };
+    this.constructor.update(query, update, cb);
   },
   deleteReminder: function (reminderObj, cb) {
-    // Find reminderObj and delete it.
-    this.save(cb);
+    var query = { _id: this._id };
+    var update = { $pull: { 'reminders': { reminder: reminderObj.reminder } } };
+    this.constructor.update(query, update, cb);
   }
 }
 
