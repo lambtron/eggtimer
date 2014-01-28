@@ -36,9 +36,13 @@ app.get('*', function(req, res) {
 
 app.post('/email/inbound', function(req, res) {
   if (res.headers) { res.send(200) }
+  
+  var inbound = {
+    'from': req.body.mandrill_events.msg.from_email,
+    'body': req.body.mandrill_events.msg.text,
+  }
   //res.send(200);
-  console.log('hi');
-  console.log(req.body.mandrill_events);
+  mail.incomingEmail(inbound);
   
 });
 
