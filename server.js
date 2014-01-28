@@ -36,7 +36,7 @@ app.get('*', function(req, res) {
 
 app.post('/email/inbound', function(req, res) {
   console.log('**');
-  console.log(req.body.mandrill_events);
+  console.log(req.body());
   res.send(200);
 });
 
