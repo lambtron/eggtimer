@@ -10,8 +10,8 @@ var express = require('express')
   , $ = require('jquery')
   // , io = require('socket.io').listen(server)
   , port = process.env.PORT || 3000
-  // , mail = require('./app/controllers/mail')
-  , mail = require('./app/controllers/mail_smtp') // comment this out later
+  , mail = require('./app/controllers/mail')
+  //, mail = require('./app/controllers/mail_smtp') // comment this out later
   , fs = require('fs');
 
 // Set environmental variables.
@@ -34,9 +34,18 @@ app.get('*', function(req, res) {
 	res.sendfile('index.html', {'root': './public/views/'});
 });
 
+app.get('/email/inbound', function(req, res) {
+  var body = '';
+  req.on('data', function(chunk) {
+    body += chunk;
+  });
+  req.on('end', function() {
+    mail.incomingEmail(body);
+  });
+});
+
 // Listen (start app with node server.js) ==========================================================
 server.listen(port, function() {
-	console.log("App is now listening on port " + port);
-	
+	console.log("App is now listening on port " + port)
   // mail.sendRegistrationConfirmation();
 });
