@@ -8,13 +8,13 @@
 		// Go through each line.
 		var emailLines = body.split('\n+');
 
-    console.log(emailLines)
+    console.log(emailLines);
 
 		// emailLines is an array of lines in the email.
 		// Look for 'add', 'remove', 'change' at the beginning of each.
 		for(var i = 0; i < emailLines.length; i++) {
 			reminderOperations.push(parseLineToOperation(emailLines[i]));
-		};
+		}
   };
 
   // Private functions.
@@ -25,7 +25,7 @@
 
   	// Output should be moment date.
   	return new_d;
-  };
+  }
 
   function standardizeFrequency(f) {
   	// 
@@ -41,7 +41,7 @@
 	  // ];
 
   	return new_f;
-  };
+  }
 
   function parseLineToOperation(l) {
   	// Argument is a line (String). Return the proper operation, including
@@ -82,6 +82,6 @@
 		operation.frequency = standardizeFrequency(lineSections[2]);
 
   	return operation;
-  };
+  }
 
 }());

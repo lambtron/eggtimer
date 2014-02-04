@@ -7,12 +7,12 @@ var express = require('express')
   , server = http.createServer(app)
   , mongoose = require('mongoose')
   , database = require('./config/database')
-  , $ = require('jquery')
+  // , $ = require('jquery')
   // , io = require('socket.io').listen(server)
-  , port = process.env.PORT || 3000
-  , mail = require('./app/controllers/mail')
+  , port = process.env.PORT || 3000;
+  // , mail = require('./app/controllers/mail')
   //, mail = require('./app/controllers/mail_smtp') // comment this out later
-  , fs = require('fs');
+  // , fs = require('fs');
 
 // Set environmental variables.
 // require('./config/config');
@@ -27,24 +27,6 @@ app.use(express.bodyParser());
 
 // Routes ==========================================================================================
 require('./config/routes.js')(app);
-
-// Application route =============================================================================
-app.get('*', function(req, res) {
-	// Load the single view file (Angular will handle the page changes).
-	res.sendfile('index.html', {'root': './public/views/'});
-});
-
-app.post('/email/inbound', function(req, res) {
-  var events = JSON.parse(req.body.mandrill_events);
-
-  for (var i=0; i<events.length; i++) {
-    mail.incomingEmail({
-      'from': events[i].msg.from_email,
-      'text': events[i].msg.text
-    });
-    res.send(200);
-  }
-});
 
 // Listen (start app with node server.js) ==========================================================
 server.listen(port, function() {

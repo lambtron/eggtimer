@@ -11,6 +11,8 @@ require('../app/models/user');
  * Module dependencies =============================================================================
  */
 var _ = require('underscore')
+	, mail = require('./app/controllers/mail')
+	// , fs = require('fs')
 	, mongoose = require('mongoose')
 	, User = mongoose.model('User');
 
@@ -37,7 +39,8 @@ module.exports = function(app) {
 	});
 
 	// Endpoint for receiving inbound email.
-	app.post('/api/email', function(req, res) {
+	app.post('/email/inbound', function(req, res) {
+
 		// Inbound email logic.
 
 		// Get user (based on email address).
@@ -47,7 +50,18 @@ module.exports = function(app) {
 		// Then perform right database operations based on email.
 
 		// Respond with confirmation or clarification email.
+
+		var events = JSON.parse(req.body.mandrill_events);
+
+		for (var i=0; i<events.length; i++) {
+      mail.incomingEmail({
+        'from': events[i].msg.from_email,
+        'text': events[i].msg.text
+      });
+      res.send(200);
+		}
 	});
+
 
 	// Application route =============================================================================
 	app.get('*', function(req, res) {

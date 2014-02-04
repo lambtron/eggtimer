@@ -8,8 +8,10 @@
   // Get the email.
   
   module.exports.incomingEmail = function(body) {
-    console.log("Incoming email")
+    console.log("Incoming email");
     inbound.parseEmail(body.text);
   };
+
+
 
 }());
